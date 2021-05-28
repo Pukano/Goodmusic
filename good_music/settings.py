@@ -27,6 +27,7 @@ SECRET_KEY = key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get("ENV") == "PRODUCTION":
+    import django_heroku
     DEBUG = False
     ALLOWED_HOSTS = ['goodmusiq.herokuapp.com']
 else:
@@ -141,6 +142,8 @@ STATIC_URL = '/static/'
 INTERNAL_IPS = ['127.0.0.1']
 
 if os.environ.get('ENV') == 'PRODUCTION':
+    
+    django_heroku.settings(locals())
 
     PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
     STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
