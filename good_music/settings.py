@@ -136,12 +136,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
 
 INTERNAL_IPS = ['127.0.0.1']
 
 if os.environ.get('ENV') == 'PRODUCTION':
+    STATIC_URL = '/static/'
     
     django_heroku.settings(locals())
 
@@ -161,6 +162,8 @@ if os.environ.get('ENV') == 'PRODUCTION':
     DATABASES['default'].update(db_from_env)
 
 else:
+    STATIC_URL = '/static/'
+
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, "static"),
         # 'media',
