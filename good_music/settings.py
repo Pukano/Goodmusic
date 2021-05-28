@@ -27,7 +27,7 @@ SECRET_KEY = key
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get("ENV") == "PRODUCTION":
     DEBUG = False
-    ALLOWED_HOSTS = ['goodmusic.herokuapp.com']
+    ALLOWED_HOSTS = ['goodmusiq.herokuapp.com']
 else:
     DEBUG = True
     ALLOWED_HOSTS = []
