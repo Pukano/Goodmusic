@@ -15,8 +15,8 @@ import dj_database_url
 from .secret import key, key1
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -142,15 +142,15 @@ INTERNAL_IPS = ['127.0.0.1']
 
 if os.environ.get('ENV') == 'PRODUCTION':
 
-    # PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-    # STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-    # STATICFILES_DIRS = (
-    #     os.path.join(PROJECT_ROOT, 'static'),
-    # )
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
     STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+        os.path.join(PROJECT_ROOT, 'static'),
     )
+    # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    # STATICFILES_DIRS = (
+    # os.path.join(BASE_DIR, 'static'),
+    # )
 
     STATICFILES_STORAGE = 'whitenoise.storage.CommpressedManifestStaticFilesStorage'
 
