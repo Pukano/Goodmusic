@@ -1,0 +1,1 @@
+web: gunicorn good_music.wsgi

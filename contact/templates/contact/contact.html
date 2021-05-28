@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+{% load static %}
+  
+  <section class="section">
+    <div class="wrapper">
+      <div class="row">
+        <div class="col-md-8">
+          <form method="post">
+            
+            {% csrf_token %}
+            {% bootstrap_form contact_form %}
+            {% bootstrap_form note_form %}
+
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" id="submit" name="submit" value="Envoyer message">
+            </div>
+          </form>
+        </div>
+        <div class="col-md-4 ">
+          <h4>Contact Details</h4>
+          <ul class="with-icon colored">
+            <li><img src="{% static 'img/index.jpg' %}" alt="icon location" > 348 Av des Champs-Elysées, 75008 Paris</li>
+            <li><img src="{% static 'img/icon-mail.png' %}" alt="icon mail" > {{contactdetails.email}}</li>
+            <li><img src="{% static 'img/phone.png' %}" alt="icon phone" > {{contactdetails.phone_number}}</li>
+          </ul>
+
+          <h4>Retour d'information</h4>
+          <p>Vous n'avez pas trouvé l'information souhaitée ? Vous pouvez contacter nos conseillers.</p>
+          
+        </div>
+      </div>
+    </div>
+  </section>  
+  
+  
+{% endblock content %}

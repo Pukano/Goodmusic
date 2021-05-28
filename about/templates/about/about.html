@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <section class="section">
+    <div class="wrapper">
+      <div class="row">
+        <div class="col-md-12"><h2 class="text-center">Notre Compagnie</h2></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p><img src="{{about.picture}}" class="img-responsive center-block" alt="image about us"></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Notre Vision</h2>
+          <p>{{about.vision}}</p>
+        </div>
+        <div class="col-md-6">
+          <h2>Notre Mission</h2>
+          <p>{{about.mission}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+{% endblock %}
