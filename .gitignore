@@ -4,4 +4,4 @@ env/
 .env/
 ENV/
 __pycache__
-good_music/secret.py
+./good_music/secret.py
