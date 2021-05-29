@@ -146,7 +146,7 @@ STATICFILES_DIRS = (
 )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-
+STATICFILES_STORAGE = 'whitenoise.storage.CommpressedManifestStaticFilesStorage'
 
 INTERNAL_IPS = ['127.0.0.1']
 
