@@ -16,7 +16,7 @@ from .secret import key, key1
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 if os.environ.get("ENV") == "PRODUCTION":
-    # import django_heroku
+    import django_heroku
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 else:
     BASE_DIR = Path(__file__).resolve().parent.parent
@@ -153,7 +153,7 @@ INTERNAL_IPS = ['127.0.0.1']
 if os.environ.get('ENV') == 'PRODUCTION':
     # STATIC_URL = '/static/'
     
-    # django_heroku.settings(locals())
+    django_heroku.settings(locals())
 
     # PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
     # STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
