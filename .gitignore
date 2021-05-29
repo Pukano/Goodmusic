@@ -1,7 +1,7 @@
-# env
-# env/
-# .env
-# .env/
-# ENV/
+env
+env/
+.env
+.env/
+ENV/
 __pycache__
 secret.py
