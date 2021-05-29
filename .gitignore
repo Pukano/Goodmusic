@@ -1,7 +1,2 @@
-env
-env/
-.env
-.env/
-ENV/
 __pycache__
-./good_music/secret.py
+secret.py
