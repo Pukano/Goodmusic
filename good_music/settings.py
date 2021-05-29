@@ -15,8 +15,8 @@ import dj_database_url
 from .secret import key, key1
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,7 +27,7 @@ SECRET_KEY = key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get("ENV") == "PRODUCTION":
-    import django_heroku
+    # import django_heroku
     DEBUG = False
     ALLOWED_HOSTS = ['goodmusiq.herokuapp.com']
 else:
@@ -136,7 +136,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-# STATIC_URL = '/static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (
+os.path.join(BASE_DIR, 'static'),
+)
 
 
 INTERNAL_IPS = ['127.0.0.1']
@@ -144,27 +148,24 @@ INTERNAL_IPS = ['127.0.0.1']
 if os.environ.get('ENV') == 'PRODUCTION':
     STATIC_URL = '/static/'
     
-    django_heroku.settings(locals())
+    # django_heroku.settings(locals())
 
-    PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-    STATICFILES_DIRS = (
-        os.path.join(PROJECT_ROOT, 'static'),
-    )
-    # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    # PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+    # STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
     # STATICFILES_DIRS = (
-    # os.path.join(BASE_DIR, 'static'),
+    #     os.path.join(PROJECT_ROOT, 'static'),
     # )
+
 
     STATICFILES_STORAGE = 'whitenoise.storage.CommpressedManifestStaticFilesStorage'
 
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
 
-else:
-    STATIC_URL = '/static/'
+# else:
+#     STATIC_URL = '/static/'
 
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, "static"),
-        # 'media',
-    ]
+#     STATICFILES_DIRS = [
+#         os.path.join(BASE_DIR, "static"),
+#         # 'media',
+#     ]
