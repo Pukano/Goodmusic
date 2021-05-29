@@ -31,7 +31,6 @@ SECRET_KEY = key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get("ENV") == "PRODUCTION":
-    # import django_heroku
     DEBUG = False
     ALLOWED_HOSTS = ['goodmusiq.herokuapp.com']
 else:
@@ -144,38 +143,19 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-# STATICFILES_DIRS = [
-#     'static',
-#     # 'media',
-# ]
-STATICFILES_STORAGE = 'whitenoise.storage.CommpressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CommpressedManifestStaticFilesStorage'
 
 INTERNAL_IPS = ['127.0.0.1']
 
 if os.environ.get('ENV') == 'PRODUCTION':
-    # STATIC_URL = '/static/'
-    
-    django_heroku.settings(locals())
 
-    # PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-    # STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-    # STATICFILES_DIRS = (
-    #     os.path.join(PROJECT_ROOT, 'static'),
-    # )
+    # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    # STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
     # STATICFILES_STORAGE = 'whitenoise.storage.CommpressedManifestStaticFilesStorage'
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
-
-# else:
-#     STATIC_URL = '/static/'
-
-#     STATICFILES_DIRS = [
-#         os.path.join(BASE_DIR, "static"),
-#         # 'media',
-#     ]
+    django_heroku.settings(locals())

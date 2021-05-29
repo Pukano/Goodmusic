@@ -4,4 +4,4 @@ env/
 .env/
 ENV/
 __pycache__
-# secret.py
+secret.py
