@@ -15,8 +15,12 @@ import dj_database_url
 from .secret import key, key1
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if os.environ.get("ENV") == "PRODUCTION":
+    # import django_heroku
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+else:
+    BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -142,12 +146,12 @@ STATICFILES_DIRS = (
 )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'whitenoise.storage.CommpressedManifestStaticFilesStorage'
+
 
 INTERNAL_IPS = ['127.0.0.1']
 
 if os.environ.get('ENV') == 'PRODUCTION':
-    STATIC_URL = '/static/'
+    # STATIC_URL = '/static/'
     
     # django_heroku.settings(locals())
 
@@ -156,7 +160,7 @@ if os.environ.get('ENV') == 'PRODUCTION':
     # STATICFILES_DIRS = (
     #     os.path.join(PROJECT_ROOT, 'static'),
     # )
-
+    STATICFILES_STORAGE = 'whitenoise.storage.CommpressedManifestStaticFilesStorage'
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
 
